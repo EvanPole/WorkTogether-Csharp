@@ -31,10 +31,10 @@
                 <ColumnDefinition Width="15" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
-            <Button Content="Ajouter" Grid.Column="1" Style="{StaticResource ActionButton}" />
-            <Button Content="Modifier" Grid.Column="3" Style="{StaticResource ActionButton}" />
-            <Button Content="Supprimer" Grid.Column="5" Style="{StaticResource ActionButton}" />
+            <Button Content="Ajouter" Grid.Column="1" Style="{StaticResource ActionButton}" Click="AddButton_Click" />
+            <Button Content="Modifier" Grid.Column="3" Style="{StaticResource ActionButton}" Click="EditButton_Click" />
+            <Button Content="Supprimer" Grid.Column="5" Style="{StaticResource ActionButton}" Click="RemoveButton_Click" />
         </Grid>
-        <DataGrid Grid.Column="1" Grid.Row="5" Grid.RowSpan="2" Style="{StaticResource DataGrid}" />
+        <DataGrid x:Name="dgOrder" Grid.Column="1" Grid.Row="5" Grid.RowSpan="2" Style="{StaticResource DataGrid}" AutoGenerateColumns="False" ItemsSource="{Binding allorder}" SelectedItem="{Binding SelectedOrder}" CanUserReorderColumns="False" CanUserResizeColumns="False" />
     </Grid>
 </UserControl>

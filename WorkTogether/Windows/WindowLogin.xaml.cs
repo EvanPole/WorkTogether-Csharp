@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Google.Protobuf.WellKnownTypes;
+using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +21,28 @@ namespace WorkTogether.Windows
     /// </summary>
     public partial class WindowLogin : Window
     {
+        private PasswordHasher _Hasher { get; set; }
         public WindowLogin()
         {
             InitializeComponent();
+        }
+
+        private void LoginButton_Click(object sender, RoutedEventArgs e)
+        {
+            _Hasher = new();
+            string email = EmailInput.Text;
+            string password = _Hasher.HashPassword(PasswordInput.Password);
+
+            if (!string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(password))
+            {
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.Show();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Veuillez saisir une adresse e-mail et un mot de passe");
+            }
         }
     }
 }

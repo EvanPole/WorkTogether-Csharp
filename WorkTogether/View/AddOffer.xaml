@@ -1,0 +1,60 @@
+﻿<Window x:Class="WorkTogether.View.AddOffer"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WorkTogether.View"
+        mc:Ignorable="d"
+        Title="AddOffer" Height="600" Width="800">
+    <Grid ShowGridLines="False">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="100" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="25" />
+        </Grid.RowDefinitions>
+        <TextBlock Text="Ajout d'une offre" Grid.Column="1" Grid.Row="1" Style="{StaticResource FormTitle}"/>
+
+        <TextBlock Text="Titre" Grid.Column="1" Grid.Row="3" Style="{StaticResource InputLabel}" />
+        <TextBox x:Name="TitleInput" Grid.Column="1" Grid.Row="5" Style="{StaticResource FormTextInput}"/>
+
+        <TextBlock Text="Description" Grid.Column="1" Grid.Row="7" Style="{StaticResource InputLabel}" />
+        <TextBox x:Name="DescriptionInput" Grid.Column="1" Grid.Row="9" Style="{StaticResource FormTextInput}" Height="100"/>
+
+        <TextBlock Text="Quantité Rack" Grid.Column="1" Grid.Row="11" Style="{StaticResource InputLabel}" />
+        <TextBox x:Name="RackQtyInput" Grid.Column="1" Grid.Row="13" Style="{StaticResource FormTextInput}"/>
+
+        <TextBlock Text="Prix mensuel" Grid.Column="1" Grid.Row="15" Style="{StaticResource InputLabel}" />
+        <TextBox x:Name="PriceInput" Grid.Column="1" Grid.Row="17" Style="{StaticResource FormTextInput}"/>
+
+        <TextBlock Text="Réduction" Grid.Column="1" Grid.Row="19" Style="{StaticResource InputLabel}" />
+        <TextBox x:Name="DiscountInput" Grid.Column="1" Grid.Row="21" Style="{StaticResource FormTextInput}"/>
+
+        <Button Grid.Column="1" Grid.ColumnSpan="1" Grid.Row="23" Content="Ajouter" Click="ConfirmButton_Click" />
+    </Grid>
+</Window>

@@ -1,0 +1,94 @@
+﻿<Window x:Class="WorkTogether.View.AddReservation"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WorkTogether.View"
+        mc:Ignorable="d"
+        Title="AddReservation" Height="450" Width="800">
+    <Grid ShowGridLines="False">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="20" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="25" />
+        </Grid.RowDefinitions>
+        <TextBlock Text="Ajout d'une réservation" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3" Style="{StaticResource FormTitle}"/>
+
+        <TextBlock Text="ID de l'utilisateur" Grid.Column="1" Grid.Row="3" Style="{StaticResource InputLabel}" />
+        <ComboBox x:Name="UserIDComboBox" ItemsSource="{Binding UserID}" Grid.Column="1" Grid.Row="5" SelectedIndex="0" SelectedValuePath="Id">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>
+                        <Run Text="{Binding Firstname}" />
+                        <Run Text="{Binding Lastname}" />
+                        <Run Text=" - " />
+                        <Run Text="{Binding Id}" />
+                    </TextBlock>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+
+        <TextBlock Text="ID de la baie" Grid.Column="1" Grid.Row="7" Style="{StaticResource InputLabel}" />
+        <ComboBox x:Name="BayIDComboBox" ItemsSource="{Binding BayID}" Grid.Column="1" Grid.Row="9" SelectedIndex="0" SelectedValuePath="Id">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>
+                        <Run Text="{Binding BayName}" />
+                    </TextBlock>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <TextBlock Text="ID du rack" Grid.Column="1" Grid.Row="11" Style="{StaticResource InputLabel}" />
+        <ComboBox x:Name="RackIDComboBox" ItemsSource="{Binding RackID}" Grid.Column="1" Grid.Row="13" SelectedIndex="0" SelectedValuePath="Id">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>
+                        <Run Text="{Binding RackName}" />
+                        <Run Text=" - " />
+                        <Run Text="{Binding RackId}" />
+                    </TextBlock>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <TextBlock Text="Prix" Grid.Column="1" Grid.Row="15" Style="{StaticResource InputLabel}" />
+        <TextBox x:Name="PriceInput" Grid.Column="1" Grid.Row="17" Style="{StaticResource FormTextInput}"/>
+
+        <TextBlock Text="Réduction" Grid.Column="3" Grid.Row="3" Style="{StaticResource InputLabel}" />
+        <TextBox x:Name="DiscountInput" Grid.Column="3" Grid.Row="5" Style="{StaticResource FormTextInput}"/>
+
+        <TextBlock Text="Date de départ" Grid.Column="3" Grid.Row="7" Style="{StaticResource InputLabel}" />
+        <DatePicker x:Name="StartDateInput" Grid.Column="3" Grid.Row="9" />
+
+        <TextBlock Text="Date de fin" Grid.Column="3" Grid.Row="11" Style="{StaticResource InputLabel}" />
+        <DatePicker x:Name="EndDateInput" Grid.Column="3" Grid.Row="13" />
+
+        <Button Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="19" Content="Ajouter" Click="ConfirmButton_Click" />
+    </Grid>
+</Window>

@@ -17,8 +17,10 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="20" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="25" />
             <RowDefinition Height="10" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="25" />
             <RowDefinition Height="20" />
             <RowDefinition Height="25" />
@@ -26,8 +28,10 @@
         </Grid.RowDefinitions>
         <TextBlock Text="WorkTogether" Grid.Row="1" Grid.Column="1" FontSize="20" FontWeight="Medium" HorizontalAlignment="Center" VerticalAlignment="Center" />
         <TextBlock Text="Connexion" Grid.Row="2" Grid.Column="1" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#737477" />
-        <TextBox x:Name="UsernameInput"  Grid.Row="4" Grid.Column="1" VerticalContentAlignment="Center" Style="{StaticResource LoginTextInput}" />
-        <PasswordBox x:Name="PasswordInput" Grid.Row="6" Grid.Column="1" VerticalContentAlignment="Center" Style="{StaticResource LoginPasswordInput}" />
-        <Button Content="Se connecter" Grid.Row="8" Grid.Column="1" Style="{StaticResource LoginButton}" />
+        <TextBlock Text="Email" Grid.Row="4" Grid.Column="1" FontSize="14" Foreground="#737477" />
+        <TextBox x:Name="EmailInput"  Grid.Row="5" Grid.Column="1" Style="{StaticResource LoginTextInput}" />
+        <TextBlock Text="Mot de passe" Grid.Row="7" Grid.Column="1" FontSize="14" VerticalAlignment="Center" Foreground="#737477" />
+        <PasswordBox x:Name="PasswordInput" Grid.Row="8" Grid.Column="1" VerticalContentAlignment="Center" Style="{StaticResource LoginPasswordInput}" />
+        <Button Content="Se connecter" Grid.Row="10" Grid.Column="1" Style="{StaticResource LoginButton}" Click="LoginButton_Click" />
     </Grid>
 </Window>

@@ -9,6 +9,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WorkTogether.View;
+using WorkTogether.Windows;
 
 namespace WorkTogether
 {
@@ -50,6 +51,13 @@ namespace WorkTogether
         {
             MainPanel.Children.Clear();
             MainPanel.Children.Add(new Reservations());
+        }
+
+        private void LogoutButton_Click(object sender, RoutedEventArgs e)
+        {
+            WindowLogin windowLogin = new WindowLogin();
+            windowLogin.Show();
+            this.Close();
         }
     }
 }

@@ -18,80 +18,23 @@
             <RowDefinition Height="20" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="20" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="20" />
         </Grid.RowDefinitions>
         <TextBlock Text="Stock" Grid.Column="1" Grid.Row="1" Style="{StaticResource PageTitle}" />
         <Grid Grid.Column="1" Grid.Row="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="20" />
-                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="15" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="15" />
+                <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="20" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="20" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-            <Border Grid.Column="0" Grid.Row="1" Style="{StaticResource StockCard}">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="Auto" />
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <TextBlock Text="Serveurs Disponibles" Grid.Column="0" Grid.Row="0" Style="{StaticResource StockCardTitle}" />
-                    <TextBlock Text="Emplacement" Grid.Column="0" Grid.Row="1" Style="{StaticResource StockCardSubtitle}" />
-                    <TextBlock Text="17" Grid.Column="1" Grid.RowSpan="2" Grid.Row="0" Style="{StaticResource StockCardNumber}" />
-                </Grid>
-            </Border>
-            <Border Grid.Column="2" Grid.Row="1" Style="{StaticResource StockCard}">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="Auto" />
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <TextBlock Text="Serveurs Non Disponibles" Grid.Column="0" Grid.Row="0" Style="{StaticResource StockCardTitle}" />
-                    <TextBlock Text="Emplacement" Grid.Column="0" Grid.Row="1" Style="{StaticResource StockCardSubtitle}" />
-                    <TextBlock Text="11" Grid.Column="1" Grid.RowSpan="2" Grid.Row="0" Style="{StaticResource StockCardNumber}" />
-                </Grid>
-            </Border>
-            <Border Grid.Column="0" Grid.Row="3" Style="{StaticResource StockCard}">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="Auto" />
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <TextBlock Text="Baies Disponibles" Grid.Column="0" Grid.Row="0" Style="{StaticResource StockCardTitle}" />
-                    <TextBlock Text="Emplacement" Grid.Column="0" Grid.Row="1" Style="{StaticResource StockCardSubtitle}" />
-                    <TextBlock Text="6" Grid.Column="1" Grid.RowSpan="2" Grid.Row="0" Style="{StaticResource StockCardNumber}" />
-                </Grid>
-            </Border>
-            <Border Grid.Column="2" Grid.Row="3" Style="{StaticResource StockCard}">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="Auto" />
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <TextBlock Text="Baies Non Disponibles" Grid.Column="0" Grid.Row="0" Style="{StaticResource StockCardTitle}" />
-                    <TextBlock Text="Emplacement" Grid.Column="0" Grid.Row="1" Style="{StaticResource StockCardSubtitle}" />
-                    <TextBlock Text="2" Grid.Column="1" Grid.RowSpan="2" Grid.Row="0" Style="{StaticResource StockCardNumber}" />
-                </Grid>
-            </Border>
+            <Button Content="Ajouter" Grid.Column="1" Style="{StaticResource ActionButton}" Click="AddButton_Click" />
+            <Button Content="Modifier" Grid.Column="3" Style="{StaticResource ActionButton}" Click="EditButton_Click" />
+            <Button Content="Supprimer" Grid.Column="5" Style="{StaticResource ActionButton}" Click="RemoveButton_Click" />
         </Grid>
+        <DataGrid x:Name="dgStock" Grid.Column="1" Grid.Row="5" Grid.RowSpan="2" Style="{StaticResource DataGrid}" AutoGenerateColumns="False" ItemsSource="{Binding allbay}" SelectedItem="{Binding SelectedBay}" CanUserReorderColumns="False" CanUserResizeColumns="False" />
     </Grid>
 </UserControl>

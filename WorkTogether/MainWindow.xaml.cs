@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.ComponentModel;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -9,15 +10,23 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WorkTogether.View;
+using WorkTogether.ViewModel;
 using WorkTogether.Windows;
 
 namespace WorkTogether
 {
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
+
     {
+
+        public static class PageManager
+        {
+            public static bool CurPage { get; set; }
+        }
         public MainWindow()
         {
             InitializeComponent();
@@ -55,9 +64,15 @@ namespace WorkTogether
 
         private void LogoutButton_Click(object sender, RoutedEventArgs e)
         {
-            WindowLogin windowLogin = new WindowLogin();
-            windowLogin.Show();
-            this.Close();
+            ((MainWindowViewModel)this.DataContext).Logout();
+        }
+
+        void DataWindow_Closing(object sender, CancelEventArgs e)
+        {
+            if (PageManager.CurPage)
+            {
+                e.Cancel = true;
+            }
         }
     }
-}
+}   

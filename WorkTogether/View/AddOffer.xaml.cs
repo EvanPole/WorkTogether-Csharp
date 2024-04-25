@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using WorkTogether.DB.Class;
+using static WorkTogether.MainWindow;
 
 namespace WorkTogether.View
 {
@@ -22,24 +23,92 @@ namespace WorkTogether.View
     /// </summary>
     public partial class AddOffer : Window
     {
+
         public ObservableCollection<Offer> allOffers { get; set; }
         public Offer SelectedOffer { get; set; }
         public AddOffer()
         {
+            PageManager.CurPage = true;
             InitializeComponent();
             DataContext = this;
+            DiscountInput.Text = "0";
         }
 
         private void ConfirmButton_Click(object sender, RoutedEventArgs e)
         {
             string title = TitleInput.Text;
             string description = DescriptionInput.Text;
+            string erreur = "";
             int rackQty;
             int price;
             int discount;
 
-            if (!string.IsNullOrEmpty(title) && !string.IsNullOrEmpty(description) && int.TryParse(RackQtyInput.Text, out rackQty) && int.TryParse(PriceInput.Text, out price) && int.TryParse(DiscountInput.Text, out discount))
+            if (string.IsNullOrEmpty(title))
             {
+                erreur = erreur + " - " + "Merci de remplire correctement le Titre \n";
+                TitleInput.Background = Brushes.Red;
+
+            }else
+            {
+                TitleInput.Background = Brushes.White;
+
+            }
+            if (string.IsNullOrEmpty(description))
+            {
+                erreur = erreur + " - " + "Merci de remplire correctement la description \n";
+                DescriptionInput.Background = Brushes.Red;
+
+
+            }
+            else
+            {
+                DescriptionInput.Background = Brushes.White;
+
+            }
+            if (!int.TryParse(RackQtyInput.Text, out rackQty))
+            {
+                erreur = erreur + " - " + "Merci de remplire correctement la quantité \n";
+                RackQtyInput.Background = Brushes.Red;
+
+
+            }
+            else
+            {
+                RackQtyInput.Background = Brushes.White;
+
+            }
+            if (!int.TryParse(PriceInput.Text, out price))
+            {
+                erreur = erreur + " - " + "Merci de remplire correctement le prix \n";
+                PriceInput.Background = Brushes.Red;
+
+
+            }
+            else
+            {
+                PriceInput.Background = Brushes.White;
+
+            }
+            if (!int.TryParse(DiscountInput.Text, out discount))
+            {
+                erreur = erreur + " - " + "Merci de remplire correctement la réduction \n";
+                DiscountInput.Background = Brushes.Red;
+
+
+            }
+            else
+            {
+                DiscountInput.Background = Brushes.White;
+
+            }
+
+            if (!string.IsNullOrEmpty(title) 
+                && !string.IsNullOrEmpty(description) 
+                && int.TryParse(RackQtyInput.Text, out rackQty) 
+                && int.TryParse(PriceInput.Text, out price)
+                && int.TryParse(DiscountInput.Text, out discount))
+            {
+
                 Offer newOffer = new Offer
                 {
                     Title = title,
@@ -54,11 +123,16 @@ namespace WorkTogether.View
                 try
                 {
                     using (WorktogetherContext context = new WorktogetherContext())
-                    {
+                    {                                                                                                                   
                         context.Offers.Add(newOffer);
                         context.SaveChanges();
                         this.Close();
                         MessageBox.Show("Offre ajoutée avec succès.");
+                        PageManager.CurPage = false;
+
+ 
+
+
                     }
                 }
                 catch (DbUpdateException ex)
@@ -73,7 +147,7 @@ namespace WorkTogether.View
             } 
             else
             {
-                MessageBox.Show("Veuillez remplir tous les champs");
+                MessageBox.Show(erreur);
             }
         }
     }

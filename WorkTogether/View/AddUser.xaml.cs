@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNet.Identity;
+﻿
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -28,7 +28,6 @@ namespace WorkTogether.View
 
         public Dictionary<string, int> AccessLevels { get; set; } = new();
         public ObservableCollection<User> allUsers { get; set; }
-        private PasswordHasher _Hasher { get; set; }
         public AddUser()
         {
             AccessLevels.Add("Client", 0);
@@ -40,7 +39,6 @@ namespace WorkTogether.View
 
         private void ConfirmButton_Click(object sender, RoutedEventArgs e)
         {
-            _Hasher = new();
             string firstName = FirstnameInput.Text;
             string lastName = LastnameInput.Text;
             string email = EmailInput.Text;
@@ -49,7 +47,7 @@ namespace WorkTogether.View
             string city = CityInput.Text;
             string country = CountryInput.Text;
             int accessLevel = ((KeyValuePair<string,int>)AccessLevelInput.SelectedItem).Value;
-            string password = _Hasher.HashPassword(PasswordInput.Text);
+            string password = "";
 
             if (!string.IsNullOrEmpty(firstName) && !string.IsNullOrEmpty(lastName) && !string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(address) && !string.IsNullOrEmpty(city) && !string.IsNullOrEmpty(country) && !string.IsNullOrEmpty(password) && int.TryParse(PostalCodeInput.Text, out postalCode))
             {

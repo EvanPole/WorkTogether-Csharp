@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNet.Identity;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -76,7 +75,7 @@ namespace WorkTogether.View
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             AddOffer addOffer = new AddOffer();
-            addOffer.Show();
+            addOffer.ShowDialog();
         }
 
         private void EditButton_Click(object sender, RoutedEventArgs e)

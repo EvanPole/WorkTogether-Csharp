@@ -20,9 +20,13 @@ namespace WorkTogether.View
     /// </summary>
     public partial class Home : UserControl
     {
+        public string WelcomeText { get; set; }
         public Home()
         {
-            InitializeComponent();
+            if (((App)App.Current).LoggedUser is not null)
+            {
+                WelcomeText = ((App)App.Current).LoggedUser.Firstname;
+            }
             this.DataContext = this;
         }
     }

@@ -1,5 +1,4 @@
 ﻿using Google.Protobuf.WellKnownTypes;
-using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WorkTogether.DB.Class;
 
 namespace WorkTogether.Windows
 {
@@ -21,7 +21,6 @@ namespace WorkTogether.Windows
     /// </summary>
     public partial class WindowLogin : Window
     {
-        private PasswordHasher _Hasher { get; set; }
         public WindowLogin()
         {
             InitializeComponent();
@@ -29,15 +28,32 @@ namespace WorkTogether.Windows
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            _Hasher = new();
             string email = EmailInput.Text;
-            string password = _Hasher.HashPassword(PasswordInput.Password);
+            string password = PasswordInput.Password;
 
             if (!string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(password))
             {
-                MainWindow mainWindow = new MainWindow();
+                User? user = null;
+                bool result = false;
+                using (WorktogetherContext context = new())
+                {
+                    IEnumerable<User> users = context.Users.ToList();
+                    user = context.Users.FirstOrDefault(userTemp => userTemp.Email.Equals(email));
+                }
+
+                if (user is not null)
+                {
+                    result = BCrypt.Net.BCrypt.Verify(password, user.Password);
+                    if (result)
+                    {
+                        Console.WriteLine(result.ToString());
+                        ((App)App.Current).Login(user);
+                    }
+                }
+
+/*                MainWindow mainWindow = new MainWindow();
                 mainWindow.Show();
-                this.Close();
+                this.Close();*/
             }
             else
             {

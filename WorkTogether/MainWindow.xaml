@@ -6,6 +6,7 @@
         xmlns:views="clr-namespace:WorkTogether.View"
         xmlns:local="clr-namespace:WorkTogether"
         mc:Ignorable="d"
+        Closing="DataWindow_Closing"  
         Title="WorkTogether" Height="750" Width="1400" >
     <Window.Resources>
         <FontFamily x:Key="SuperBrigade">Fonts/SuperBrigade.otf</FontFamily>

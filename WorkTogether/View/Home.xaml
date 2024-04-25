@@ -21,7 +21,7 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <TextBlock Text="Accueil" Grid.Column="1" Grid.Row="1" Style="{StaticResource PageTitle}" />
-        <TextBlock Text="Vous êtes connecté en tant qu'administrateur" Grid.Column="1" Grid.Row="2" Style="{StaticResource PageSubtitle}" />
+        <TextBlock Text="{Binding WelcomeText}" Grid.Column="1" Grid.Row="2" Style="{StaticResource PageSubtitle}" />
         <Grid Grid.Column="1" Grid.Row="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="225" />
